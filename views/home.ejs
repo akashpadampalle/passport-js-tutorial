@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <% if (locals.user) { %>
+        <h1> <%= user.name %> </h1>
+     <% } else { %>
+         <div>
+             <a href="/login"> Login </a>
+             <a href="/signup"> Signup </a>
+         </div>
+     <% } %>
+</body>
+</html>

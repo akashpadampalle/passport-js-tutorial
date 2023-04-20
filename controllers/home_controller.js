@@ -12,3 +12,7 @@ module.exports.login = function(req, res){
 module.exports.signup = function(req, res){
     return res.render('signup');
 }
+
+module.exports.restricted = function(req, res){
+    return res.render('restricted');
+}

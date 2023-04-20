@@ -8,11 +8,13 @@ const userController = require('../controllers/user_controllers');
 router.get('/', homeController.home);
 router.get('/login', homeController.login);
 router.get('/signup', homeController.signup);
+router.get('/restricted', passport.checkAuthentication ,homeController.restricted);
 
 router.post('/login', passport.authenticate('local', {
     failureRedirect: '/login',
     successRedirect: '/'
 }));
-router.post('/signup', userController.signup)
+router.post('/signup', userController.signup);
+
 
 module.exports = router;

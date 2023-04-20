@@ -6,6 +6,7 @@ const db = require('./configs/db_connection');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('./configs/passport_local_strategy');
+const MongoStore = require('connect-mongo');
 
 const port = 8000;
 
@@ -28,12 +29,19 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: (1000*60*10)
-    }
+    },
+    store: MongoStore.create({
+        mongoUrl: "mongodb://127.0.0.1:27017/passport-demo",
+        collectionName: 'sessions',
+        autoRemove: 'disabled'
+    })
 }));
 
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 app.use('/', require('./routes/index'));
 

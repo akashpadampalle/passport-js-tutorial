@@ -4,6 +4,11 @@
     <title>Home</title>
 </head>
 <body>
+
+    <!-- 
+        if user is available (authentication is done) then show user name and signout link
+        else show login and signup links
+     -->
     <% if (locals.user) { %>
         <h1> <%= user.name %> </h1>
         <a href="/signout"> Signout </a>
@@ -13,5 +18,6 @@
              <a href="/signup"> Signup </a>
          </div>
      <% } %>
+
 </body>
 </html>

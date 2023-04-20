@@ -31,6 +31,13 @@ module.exports.signup = async function (req,res){
 }
 
 
-module.exports.login = function(req, res){
-    res.render('home');
+module.exports.destroySession = function (req, res){
+    const name = req.user.name;
+    req.logout( function(err){
+        if(err){
+            console.log('ERROR: (destroySession)', err);
+        }
+        console.log('logout:',name) ;
+    });
+    res.redirect('/');
 }

@@ -8,6 +8,7 @@ const userController = require('../controllers/user_controllers');
 router.get('/', homeController.home);
 router.get('/login', homeController.login);
 router.get('/signup', homeController.signup);
+router.get('/signout', passport.checkAuthentication ,userController.destroySession);
 router.get('/restricted', passport.checkAuthentication ,homeController.restricted);
 
 router.post('/login', passport.authenticate('local', {

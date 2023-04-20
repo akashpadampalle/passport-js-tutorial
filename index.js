@@ -28,12 +28,12 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     cookie: {
-        maxAge: (1000*60*10)
+        maxAge: (1000*60*60*24*30)
     },
     store: MongoStore.create({
         mongoUrl: "mongodb://127.0.0.1:27017/passport-demo",
         collectionName: 'sessions',
-        autoRemove: 'disabled'
+        autoRemove: 'native'
     })
 }));
 

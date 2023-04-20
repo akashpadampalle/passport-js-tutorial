@@ -6,6 +6,7 @@
 <body>
     <% if (locals.user) { %>
         <h1> <%= user.name %> </h1>
+        <a href="/signout"> Signout </a>
      <% } else { %>
          <div>
              <a href="/login"> Login </a>
